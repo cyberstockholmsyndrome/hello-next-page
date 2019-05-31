@@ -5,7 +5,6 @@ import styled from "styled-components";
 
 const Nav = styled.nav`
   text-align: center;
-  margin-top: 4em;
   margin-bottom: 6em;
 `;
 

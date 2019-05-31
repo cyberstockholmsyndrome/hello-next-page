@@ -1,5 +1,6 @@
 import React from "react";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
+import Head from "next/head";
 
 import theme from "../utils/theme";
 
@@ -17,12 +18,21 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: white;
   background-color: black;
+  margin: 2em;
+  padding: 3em;
+  border: 1px solid white;
 }
 `;
 
 const Layout = props => (
   <ThemeProvider theme={theme}>
-    <GlobalStyle>{props.children}</GlobalStyle>
+    <>
+      <Head>
+        <title>Hello Next.js</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Head>
+      <GlobalStyle>{props.children}</GlobalStyle>
+    </>
   </ThemeProvider>
 );
 
