@@ -1,17 +1,15 @@
 const app = require("express")();
-const server = require("http").createServer(app);
-
+const server = require("http").Server(app);
+const io = require("socket.io")(server);
 const next = require("next");
 
 const dev = process.env.NODE_ENV !== "production";
-const port = process.env.PORT || 5000;
 const nextApp = next({ dev });
-const handle = nextApp.getRequestHandler();
+const nextHandler = nextApp.getRequestHandler();
+
+let port = 3000;
 
 connections = [];
-
-const sockServer = server.listen(port);
-const io = require("socket.io")(sockServer);
 
 io.on("connection", socket => {
   connections.push(socket);
@@ -39,10 +37,10 @@ nextApp
     });
 
     app.get("*", (req, res) => {
-      return handle(req, res);
+      return nextHandler(req, res);
     });
 
-    app.listen(3000, err => {
+    server.listen(3000, err => {
       if (err) throw err;
       console.log("> Ready on http://localhost:3000");
     });
