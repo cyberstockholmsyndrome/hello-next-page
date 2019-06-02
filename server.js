@@ -9,7 +9,7 @@ const handle = nextApp.getRequestHandler();
 
 connections = [];
 
-server.listen("https://hello-next-page.netlify.com/");
+server.listen(5000);
 
 io.on("connection", socket => {
   connections.push(socket);
