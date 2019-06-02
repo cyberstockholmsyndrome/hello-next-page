@@ -7,7 +7,7 @@ const dev = process.env.NODE_ENV !== "production";
 const nextApp = next({ dev });
 const nextHandler = nextApp.getRequestHandler();
 
-let port = 3000;
+let port = process.env.PORT || 3000;
 
 connections = [];
 
@@ -40,7 +40,7 @@ nextApp
       return nextHandler(req, res);
     });
 
-    server.listen(3000, err => {
+    server.listen(port, err => {
       if (err) throw err;
       console.log("> Ready on http://localhost:3000");
     });

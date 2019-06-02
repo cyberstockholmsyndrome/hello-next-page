@@ -15,7 +15,7 @@ const Index = () => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    socket = io("/");
+    socket = io();
     console.log("connected");
     socket.on("userCount", function(data) {
       setCount(data.userCount);
