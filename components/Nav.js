@@ -5,7 +5,7 @@ import styled from "styled-components";
 const Navigation = styled.nav`
   text-align: center;
   margin-bottom: 1em;
-  margin-top: 3em;
+  margin-top: 6em;
 `;
 
 const StyledLink = styled.a`
