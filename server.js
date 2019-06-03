@@ -9,23 +9,7 @@ const nextHandler = nextApp.getRequestHandler();
 
 let port = process.env.PORT || 3000;
 
-connections = [];
-
-io.on("connection", socket => {
-  connections.push(socket);
-  io.emit("userCount", { userCount: connections.length });
-  console.log(`Connected: ${connections.length} sockets connected`);
-
-  socket.on("message", data => {
-    console.log(data.text);
-  });
-
-  socket.on("disconnect", () => {
-    connections.splice(connections.indexOf(socket), 1);
-    io.emit("userCount", { userCount: connections.length });
-    console.log(`Disconnected: ${connections.length} sockets connected`);
-  });
-});
+let numUsers = 0;
 
 nextApp
   .prepare()
@@ -34,6 +18,22 @@ nextApp
       const actualPage = "/post";
       const queryParams = { title: req.params.id };
       nextApp.render(req, res, actualPage, queryParams);
+    });
+
+    io.on("connection", socket => {
+      ++numUsers;
+      io.emit("userCount", { userCount: numUsers });
+      console.log(`Connected: ${numUsers} sockets connected`);
+
+      socket.on("message", data => {
+        console.log(data.text);
+      });
+
+      socket.on("disconnect", () => {
+        --numUsers;
+        io.emit("userCount", { userCount: numUsers });
+        console.log(`Disconnected: ${numUsers} sockets connected`);
+      });
     });
 
     app.get("*", (req, res) => {

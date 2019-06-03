@@ -24,10 +24,10 @@ const StyledLink = styled.a`
 
 const Header = () => (
   <Nav>
-    <Link prefetch href="/">
+    <Link href="/">
       <StyledLink>Home</StyledLink>
     </Link>
-    <Link prefetch href="/about">
+    <Link href="/about">
       <StyledLink>About</StyledLink>
     </Link>
   </Nav>
