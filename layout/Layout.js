@@ -29,6 +29,7 @@ const Layout = props => (
       <Head>
         <title>Hello Next.js</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="https://socket.io/images/favicon.png" />
       </Head>
       <GlobalStyle>{props.children}</GlobalStyle>
     </>
