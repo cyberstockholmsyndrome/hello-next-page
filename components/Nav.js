@@ -20,7 +20,7 @@ const StyledLink = styled.a`
 `;
 
 const PostLink = props => (
-  <Link prefetch as={`/p/${props.id}`} href={`/post?title=${props.title}`}>
+  <Link as={`/p/${props.id}`} href={`/post?title=${props.title}`}>
     <StyledLink>{props.title}</StyledLink>
   </Link>
 );
