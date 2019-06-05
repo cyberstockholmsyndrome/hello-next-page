@@ -17,8 +17,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: white;
   background-color: black;
-  margin: 2em;
-  padding: 3em;
+  margin: 1em;
+  padding: 3em 1em 2em 1em;
   border: 1px solid white;
 }
 `;
