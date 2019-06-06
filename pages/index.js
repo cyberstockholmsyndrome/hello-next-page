@@ -8,6 +8,7 @@ import Title from "../components/Title";
 import Nav from "../components/Nav";
 import Button from "../components/Button";
 import Counter from "../components/Counter";
+import Form from "../components/Form";
 
 var socket;
 
@@ -26,9 +27,9 @@ const Index = () => {
     };
   }, []);
 
-  const handleNewMessage = () => {
+  const handleNewMessage = value => {
     console.log("emitting new message");
-    socket.emit("message", { text: "test message" });
+    socket.emit("message", { text: value });
   };
 
   return (
@@ -38,7 +39,7 @@ const Index = () => {
         <Header />
         <Title title="Hello Next.js" />
         <Nav />
-        <Button text="Emit message" click={() => handleNewMessage()} />
+        <Form onSubmit={handleNewMessage} />
         <Counter count={count} />
       </>
     </>
