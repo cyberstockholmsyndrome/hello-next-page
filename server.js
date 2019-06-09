@@ -1,16 +1,16 @@
-var compression = require("compression");
-var app = require("express")();
-var server = require("http").Server(app);
-var io = require("socket.io")(server);
-var next = require("next");
+const compression = require("compression");
+const app = require("express")();
+const server = require("http").Server(app);
+const io = require("socket.io")(server);
+const next = require("next");
 
-var dev = process.env.NODE_ENV !== "production";
-var nextApp = next({ dev });
-var nextHandler = nextApp.getRequestHandler();
+const dev = process.env.NODE_ENV !== "production";
+const nextApp = next({ dev });
+const nextHandler = nextApp.getRequestHandler();
 
-var port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 
-var numUsers = 0;
+let numUsers = 0;
 
 app.use(compression());
 
